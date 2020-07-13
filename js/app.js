@@ -9,7 +9,9 @@ const gameField = {
 
 const enemyStartPosition = {
     enemyStartX = -100,
-    enemyFirstStartY = 50,
+    firstEnemyStartY = 50,
+    secondEnamyStartY = 75,
+    thirdEnemyStartY = 100,
     enemyMaxSpeed = 6,
     enemyMinSpeed = 1
 };
@@ -19,7 +21,7 @@ const playerStartPosition = {
     playerStartY = 350,
 };
 
-const Enemy = function() {
+const Enemy = function(y) {
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -27,6 +29,7 @@ const Enemy = function() {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     this.x = enemyStartX;
+    this.y = y;
     this.speed = Math.floor(Math.random() * (enemyMaxSpeed - enemyMinSpeed) + enemyMinSpeed);
 };
 
@@ -101,7 +104,10 @@ Player.prototype.restart = function() {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-let allEnemies = [];
+let enemyFirst = new Enemy(enemyStartPosition.firstEnemyStartY);
+let enemySecond = new Enemy(enemyStartPosition.secondEnamyStartY);
+let enemyThird = new Enemy(enemyStartPosition.thirdEnemyStartY);
+let allEnemies = [enemyFirst, enemySecond, enemyThird];
 let player = new Player();
 
 
