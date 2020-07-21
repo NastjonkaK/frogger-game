@@ -1,4 +1,10 @@
 // Enemies our player must avoid
+let points = 0;
+let scoreboard = document.createElement('p');
+scoreboard.textContent = 'Your score: 0';
+scoreboard.style.cssText = 'color: #3a9500; font-size: 30px; font-weight: bold; margin-top: 50px';
+document.body.appendChild(scoreboard);
+
 const gameField = {
     minX: 0,
     minY: 0,
@@ -67,6 +73,8 @@ const Player = function () {
 
 Player.prototype.update = function () {
     if (this.y < gameField.minY) {
+        points++;
+        scoreboard.innerHTML = `Your score: ${points}`;
         this.y = playerStartPosition.playerStartY;
     }
 };
@@ -88,8 +96,11 @@ Player.prototype.handleInput = function (key) {
 };
 
 Player.prototype.restart = function () {
+    points = 0;
+    scoreboard.innerHTML = `Your score: ${points}`;
     this.x = playerStartPosition.playerStartX;
     this.y = playerStartPosition.playerStartY;
+
 };
 
 // Now instantiate your objects.
