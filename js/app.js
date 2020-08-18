@@ -75,6 +75,7 @@ Player.prototype.update = function () {
     if (this.y < gameField.minY) {
         points++;
         scoreboard.innerHTML = `Your score: ${points}`;
+        this.x = playerStartPosition.playerStartX;
         this.y = playerStartPosition.playerStartY;
     }
 };
